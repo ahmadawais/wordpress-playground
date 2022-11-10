@@ -551,6 +551,12 @@ export class MarkdownDocumenter {
 	private _writeModelTable(output: DocSection, apiModel: ApiModel): void {
 		const packagesTable: DocTable = this.table(['Package', 'Description']);
 
+		const groups = new Set<string>();
+		for (const apiMember of apiModel.members) {
+			groups.add(apiMember.displayName);
+		}
+		console.log(groups);
+
 		for (const apiMember of apiModel.members) {
 			const row: DocTableRow = this.tableRow([
 				this._createTitleCell(apiMember),

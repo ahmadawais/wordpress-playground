@@ -23,7 +23,6 @@
 		"noFallthroughCasesInSwitch": true,
 		"importsNotUsedAsValues": "error",
 	
-
         "moduleResolution": "node",
 
 		"esModuleInterop": false,
