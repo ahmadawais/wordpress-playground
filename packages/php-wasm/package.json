@@ -22,8 +22,8 @@
 	"engines": {
 		"node": ">=12"
 	},
-	"main": "build/index.js",
-	"types": "build-types",
+	"main": "src/index.ts",
+	"types": "../../build-types/php-wasm/src",
 	"dependencies": {},
 	"publishConfig": {
 		"access": "public"

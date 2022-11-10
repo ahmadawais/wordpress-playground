@@ -62,7 +62,7 @@ import { DocTableCell } from '../nodes/DocTableCell';
 import { DocNoteBox } from '../nodes/DocNoteBox';
 import { ClassifiedToken, Utilities } from '../utils/Utilities';
 import { CustomMarkdownEmitter } from '../markdown/CustomMarkdownEmitter';
-import { DocumenterConfig } from './DocumenterConfig';
+import type { DocumenterConfig } from './DocumenterConfig';
 import { ContentBlockType, DocContentBlock } from '../nodes/DocContentBlock';
 import {
 	BuilderArg,
@@ -368,8 +368,6 @@ export class MarkdownDocumenter {
 		output: DocSection,
 		apiItem: ApiDeclaredItem
 	): void {
-		const configuration: TSDocConfiguration = this._tsdocConfiguration;
-
 		if (apiItem instanceof ApiClass) {
 			if (apiItem.extendsType) {
 				output.appendNode(
@@ -458,8 +456,6 @@ export class MarkdownDocumenter {
 	}
 
 	private _writeRemarksSection(output: DocSection, apiItem: ApiItem): void {
-		const configuration: TSDocConfiguration = this._tsdocConfiguration;
-
 		if (apiItem instanceof ApiDocumentedItem) {
 			const tsdocComment: DocComment | undefined = apiItem.tsdocComment;
 
@@ -1316,31 +1312,6 @@ export class MarkdownDocumenter {
 		return this.tableCell(section.nodes);
 	}
 
-	private _writeBreadcrumb(output: DocSection, apiItem: ApiItem): void {
-		output.appendNodeInParagraph(
-			this.link('Home', this._getLinkFilenameForApiItem(this._apiModel))
-		);
-
-		for (const hierarchyItem of apiItem.getHierarchy()) {
-			switch (hierarchyItem.kind) {
-				case ApiItemKind.Model:
-				case ApiItemKind.EntryPoint:
-					// We don't show the model as part of the breadcrumb because it is the root-level container.
-					// We don't show the entry point because today API Extractor doesn't support multiple entry points;
-					// this may change in the future.
-					break;
-				default:
-					output.appendNodesInParagraph([
-						this.text(' > '),
-						this.link(
-							hierarchyItem.displayName,
-							this._getLinkFilenameForApiItem(hierarchyItem)
-						),
-					]);
-			}
-		}
-	}
-
 	private _getMembersAndWriteIncompleteWarning(
 		apiClassOrInterface: ApiClass | ApiInterface,
 		output: DocSection
@@ -1629,10 +1600,6 @@ export class MarkdownDocumenter {
 		return new DocSection({ configuration }, nodes);
 	}
 
-	private inline(nodes: BuilderArg = []): DocContentBlock {
-		return this.build(nodes).toContentBlock('inline');
-	}
-
 	private block(
 		nodes: BuilderArg = [],
 		type: ContentBlockType = 'block'
@@ -1656,10 +1623,6 @@ export class MarkdownDocumenter {
 
 	private softnl(): DocNode {
 		return this.literal('\\\n');
-	}
-
-	private nl(): DocNode {
-		return this._whitespace('\n');
 	}
 
 	private indent(): DocNode {

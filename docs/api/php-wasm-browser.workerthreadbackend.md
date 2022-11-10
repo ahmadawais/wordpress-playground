@@ -8,7 +8,7 @@ interface WorkerThreadBackend
 ```
 ## Properties
 
-* `jsEnv`    [JavascriptRuntime](./php-wasm.javascriptruntime.md)
+* `jsEnv`    JavascriptRuntime
 
 ## Methods
 

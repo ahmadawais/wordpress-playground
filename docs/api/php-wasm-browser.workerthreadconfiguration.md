@@ -12,5 +12,5 @@ interface WorkerThreadConfiguration
 with the service worker.
 
 
-* `phpBrowser`    [PHPBrowser](./php-wasm.phpbrowser.md) – <b>(Optional)</b> The PHP browser instance to use.
+* `phpBrowser`    PHPBrowser – <b>(Optional)</b> The PHP browser instance to use.
 

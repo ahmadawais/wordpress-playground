@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as colors from 'colors';
 import * as path from 'path';
-import * as tsdoc from '@microsoft/tsdoc';
+import type * as tsdoc from '@microsoft/tsdoc';
 import {
 	ApiDocumentedItem,
 	ApiItem,

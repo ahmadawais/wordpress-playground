@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Run from the repo root
-bash ./scripts/build-types.sh
+
 bash ./scripts/build-api-model.sh
-bash ./scripts/build-api-markdown.sh
+node ./build-scripts/generate-reference-docs.js -i ./build-api/combined -o ./docs/api
 node ./scripts/build-readme-md-files.js

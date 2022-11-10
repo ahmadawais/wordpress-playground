@@ -1,15 +1,20 @@
-import { DocNodeKind, IDocNodeParameters, DocNode, IDocNodeParsedParameters, TokenSequence } from '@microsoft/tsdoc';
+import {
+	IDocNodeParameters,
+	DocNode,
+	IDocNodeParsedParameters,
+	TokenSequence,
+} from '@microsoft/tsdoc';
 import { CustomDocNodeKind } from './CustomDocNodeKind';
 /**
  * Constructor parameters for {@link DocSoftBreak}.
  */
-export interface IDocSoftBreakParameters extends IDocNodeParameters {
-}
+export interface IDocSoftBreakParameters extends IDocNodeParameters {}
 /**
  * Constructor parameters for {@link DocSoftBreak}.
  */
-export interface IDocSoftBreakParsedParameters extends IDocNodeParsedParameters {
-    softBreakExcerpt: TokenSequence;
+export interface IDocSoftBreakParsedParameters
+	extends IDocNodeParsedParameters {
+	softBreakExcerpt: TokenSequence;
 }
 /**
  * Instructs a renderer to insert an explicit newline in the output.
@@ -25,21 +30,23 @@ export interface IDocSoftBreakParsedParameters extends IDocNodeParsedParameters 
  * two empty lines (because that could start a new CommonMark paragraph).
  */
 export class DocForceSoftBreak extends DocNode {
-    /**
-     * Don't call this directly.  Instead use {@link TSDocParser}
-     * @internal
-     */
-    constructor(parameters: IDocSoftBreakParameters | IDocSoftBreakParsedParameters) {
-        super(parameters);
-    }
+	/**
+	 * Don't call this directly.  Instead use {@link TSDocParser}
+	 * @internal
+	 */
+	constructor(
+		parameters: IDocSoftBreakParameters | IDocSoftBreakParsedParameters
+	) {
+		super(parameters);
+	}
 
-    /** @override */
-    public get kind(): string {
-        return CustomDocNodeKind.ForceSoftBreak;
-    }
-    /** @override */
-    protected onGetChildNodes(): ReadonlyArray<DocNode | undefined> {
-        return [];
-    }
+	/** @override */
+	public get kind(): string {
+		return CustomDocNodeKind.ForceSoftBreak;
+	}
+	/** @override */
+	protected onGetChildNodes(): ReadonlyArray<DocNode | undefined> {
+		return [];
+	}
 }
 //# sourceMappingURL=DocSoftBreak.d.ts.map

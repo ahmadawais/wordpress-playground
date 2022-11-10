@@ -1,17 +1,6 @@
 const fs = require('fs');
 const yargs = require('yargs');
-let generator;
-try {
-	generator = require(__dirname + '/../build/index');
-} catch (e) {
-	console.error(e);
-	throw new Error(
-		'Build the typescript-reference-doc-generator package to generate the documentation. ' +
-			'Run `npm run build:doc-generator` in the repo root.'
-	);
-}
-
-const { ApiModelBuilder, MarkdownDocumenter } = generator;
+const { ApiModelBuilder, MarkdownDocumenter } = require('../src/index.ts');
 
 const { i: inputFolder, o: outputFolder } = yargs(process.argv.slice(2))
 	.command('build', 'Builds the project files')

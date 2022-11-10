@@ -27,8 +27,8 @@
 	  "./service-worker": "./src/service-worker/worker-library.ts",
 	  ".": "./src/index.ts"
 	},
-	"main": "build/index.js",
-	"types": "build-types",
+	"main": "src/index.ts",
+	"types": "../../build-types/php-wasm-browser/src",
 	"dependencies": {
 		"php-wasm": "file:../php-wasm"
 	},

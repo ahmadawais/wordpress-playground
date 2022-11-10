@@ -5,7 +5,7 @@ loadPHPWithProgress<!-- -->(\
 &emsp;&emsp;&emsp;<!-- -->phpLoaderModule<!-- -->: [any](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#any)<!-- -->, \
 &emsp;&emsp;&emsp;<!-- -->dataDependenciesModules?<!-- -->: [any](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#any)<!-- -->[]<!-- -->, \
 &emsp;&emsp;&emsp;<!-- -->phpModuleArgs?<!-- -->: [any](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#any)\
-)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;[PHP](./php-wasm.php.md)<!-- -->&gt;
+)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;<!-- -->PHP<!-- -->&gt;
 
 * `phpLoaderModule` – The ESM-wrapped Emscripten module. Consult the Dockerfile for the build process.
 * `dataDependenciesModules` – Optional. A list of the ESM-wrapped Emscripten data dependency modules.

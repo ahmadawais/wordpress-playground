@@ -53,25 +53,8 @@ async function buildHtaccess() {
 }
 
 async function buildModules() {
-	const { main: esbuildModules } = require('./esbuild-packages');
+	const { main: esbuildModules } = require('./esbuild');
 	await esbuildModules();
-}
-
-async function watchDocGenerator() {
-	buildDocGenerator({
-		watch: true,
-	});
-}
-
-async function buildDocGenerator(overrides = {}) {
-	const { configFor } = require('./esbuild-packages');
-	const esConfig = configFor('typescript-reference-doc-generator');
-	const { build } = require('esbuild');
-	build({
-		...esConfig,
-		platform: 'node',
-		...overrides,
-	});
 }
 
 exports.copyBuiltWordPress = collectBuiltWordPress;
@@ -84,15 +67,12 @@ exports.buildWordPress = gulp.series(
 );
 exports.buildPHP = gulp.series(buildPHPInPackage, collectBuiltPHP);
 exports.buildJS = buildModules;
-exports.watchDocGenerator = watchDocGenerator;
-exports.buildDocGenerator = buildDocGenerator;
 
 exports.buildAll = gulp.parallel(
 	exports.buildHtaccess,
 	exports.buildWordPress,
 	exports.buildPHP,
-	exports.buildJS,
-	exports.buildDocGenerator
+	exports.buildJS
 );
 
 function asyncPipe(pipe) {

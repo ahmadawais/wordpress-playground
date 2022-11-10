@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"allowJs": true,
-		"checkJs": true,
+		"checkJs": false,
 		"allowSyntheticDefaultImports": true,
 		"jsx": "preserve",
 		"target": "esnext",
@@ -18,18 +18,37 @@
 
 		"noImplicitAny": false,
 		"noUnusedLocals": true,
-		"noUnusedParameters": true,
+		"noUnusedParameters": false,
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"importsNotUsedAsValues": "error",
+	
 
-		"moduleResolution": "NodeNext",
+        "moduleResolution": "node",
 
 		"esModuleInterop": false,
 		"resolveJsonModule": true,
 
-		"typeRoots": [ "./typings" ],
-		"types": []
-	},
-	"exclude": []
+		"rootDir": "packages",
+		"declarationDir": "build-types",
+		"outDir": "build-types",
+
+		"baseUrl": ".",
+		"paths": {
+		  "php-wasm": ["build-types/php-wasm/src/index.d.ts", "packages/php-wasm/src/index.ts"],
+		  "php-wasm-browser": ["build-types/php-wasm-browser/src/index.d.ts", "packages/php-wasm-browser/src"],
+		  "php-wasm-browser/service-worker": [
+			"build-types/php-wasm-browser/src/service-worker/worker-library.d.ts",
+			"packages/php-wasm-browser/src/service-worker/worker-library.ts"
+		  ],
+		  "php-wasm-browser/worker-thread": [
+			"build-types/php-wasm-browser/src/worker-thread/worker-library.d.ts",
+			"packages/php-wasm-browser/src/worker-thread/worker-library.ts"
+		  ],
+		  "wordpress-wasm": [
+			"build-types/wordpress-wasm/src/index.d.ts",
+			"packages/wordpress-wasm/src/index.ts"
+		  ]
+		}
+	}
 }

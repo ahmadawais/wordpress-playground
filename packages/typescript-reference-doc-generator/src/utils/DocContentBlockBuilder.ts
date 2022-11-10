@@ -2,11 +2,14 @@
 // See LICENSE in the project root for license information.
 
 import { DocNode, TSDocConfiguration } from '@microsoft/tsdoc';
-import { ContentBlockType, DocContentBlock, IContentBlockParameters } from '../nodes/DocContentBlock';
-import { DocForceSoftBreak } from '../nodes/DocForceSoftBreak';
+import { ContentBlockType, DocContentBlock } from '../nodes/DocContentBlock';
 
 type BuilderArgItem = DocNode | unknown;
-export type BuilderArg = readonly BuilderArgItem[] | BuilderArgItem[] | DocContentBlockBuilder | unknown;
+export type BuilderArg =
+	| readonly BuilderArgItem[]
+	| BuilderArgItem[]
+	| DocContentBlockBuilder
+	| unknown;
 
 /**
  * Represents List, similar to an HTML `<List>` element.
@@ -20,7 +23,10 @@ export class DocContentBlockBuilder {
 		return this._nodes;
 	}
 
-	public static create(configuration: TSDocConfiguration, nodes?: BuilderArg) {
+	public static create(
+		configuration: TSDocConfiguration,
+		nodes?: BuilderArg
+	) {
 		return new DocContentBlockBuilder(configuration, nodes);
 	}
 
@@ -64,7 +70,9 @@ export class DocContentBlockBuilder {
 		return this;
 	}
 
-	public toContentBlockMaybe(type?: ContentBlockType): DocContentBlock | null {
+	public toContentBlockMaybe(
+		type?: ContentBlockType
+	): DocContentBlock | null {
 		if (this.nodes.length === 0) {
 			return null;
 		}
@@ -75,18 +83,20 @@ export class DocContentBlockBuilder {
 		return this.toContentBlock().getChildNodes();
 	}
 
-	public toContentBlock(type: ContentBlockType = this.preferredBlockType): DocContentBlock {
+	public toContentBlock(
+		type: ContentBlockType = this.preferredBlockType
+	): DocContentBlock {
 		return new DocContentBlock(
 			{
 				configuration: this.configuration,
-				type
+				type,
 			},
 			this.nodes
 		);
 	}
 
 	public join(separator: DocNode) {
-		const newNodes = [];
+		const newNodes: DocNode[] = [];
 		for (let i = 0; i < this.nodes.length; i++) {
 			if (i > 0) {
 				newNodes.push(separator);

@@ -21,7 +21,6 @@ import {
 	DocExcerpt,
 } from '@microsoft/tsdoc';
 
-import { Utilities } from '../utils/Utilities';
 import { IndentedWriter } from '../utils/IndentedWriter';
 
 export interface IMarkdownEmitterOptions {}

@@ -3,7 +3,7 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import { IConfigFile } from './IConfigFile';
+import type { IConfigFile } from './IConfigFile';
 
 /**
  * Helper for loading the api-documenter.json file format.  Later when the schema is more mature,

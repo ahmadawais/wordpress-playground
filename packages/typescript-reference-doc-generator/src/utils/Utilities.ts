@@ -6,7 +6,6 @@ import {
 	ApiItem,
 	ApiDeclaredItem,
 	ApiClass,
-	ApiItemKind,
 } from '@microsoft/api-extractor-model';
 import { DocLinkTag, DocNode, DocPlainText } from '@microsoft/tsdoc';
 import ts from 'typescript';
@@ -17,7 +16,7 @@ export class Utilities {
 		/[^a-z0-9_\-\.]/gi;
 
 	public static getUnscopedPackageName(packageName: string) {
-		return packageName.split('/').pop();
+		return packageName.split('/').pop() || '';
 	}
 
 	/**

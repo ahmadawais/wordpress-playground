@@ -20,14 +20,14 @@ Constructs a new instance of the `SpawnedWorkerThread` class
 
 ## Methods
 
-### eval<!-- -->(<!-- -->code<!-- -->: [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#the-primitives-string-number-and-boolean)<!-- -->)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;[PHPOutput](./php-wasm.phpoutput.md)<!-- -->&gt;
+### eval<!-- -->(<!-- -->code<!-- -->: [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#the-primitives-string-number-and-boolean)<!-- -->)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;<!-- -->PHPOutput<!-- -->&gt;
 
 * `code` – The PHP code to run.
 * Returns: The result of the PHP code.
 
 
 Runs PHP code.
-### HTTPRequest<!-- -->(<!-- -->request<!-- -->: [PHPRequest](./php-wasm.phprequest.md)<!-- -->)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;[PHPResponse](./php-wasm.phpresponse.md)<!-- -->&gt;
+### HTTPRequest<!-- -->(<!-- -->request<!-- -->: PHPRequest<!-- -->)<!-- -->: [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)<!-- -->&lt;<!-- -->PHPResponse<!-- -->&gt;
 
 * `request` – The request to dispatch.
 * Returns: The response from the PHPServer.

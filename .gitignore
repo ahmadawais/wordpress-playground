@@ -5,6 +5,10 @@ node_modules
 package-lock.json
 build/*
 build-api/*
+build-types/*
+build-scripts/*
+build-wp/*
+build-php/*
 !build/wp-admin
 !build/wp-content
 !build/wp-includes

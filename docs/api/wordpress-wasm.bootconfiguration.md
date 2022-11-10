@@ -8,5 +8,5 @@ interface BootConfiguration
 ```
 ## Properties
 
-* `onWasmDownloadProgress`    [DownloadProgressCallback](./php-wasm-browser.downloadprogresscallback.md)
+* `onWasmDownloadProgress`    DownloadProgressCallback
 

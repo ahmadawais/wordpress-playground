@@ -22,8 +22,13 @@
 	"engines": {
 		"node": ">=12"
 	},
-	"main": "build/index.js",
-	"types": "build-types",
+	"exports": {
+	  "./worker-thread": "./src/worker-thread.ts",
+	  "./service-worker": "./src/service-worker.ts",
+	  ".": "./src/index.ts"
+	},
+	"main": "src/index.ts",
+	"types": "../../build-types/wordpress-wasm/src",
 	"dependencies": {
 		"php-wasm": "file:../php-wasm",
 		"php-wasm-browser": "file:../php-wasm-browser"
