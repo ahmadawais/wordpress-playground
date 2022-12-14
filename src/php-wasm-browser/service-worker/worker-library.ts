@@ -5,7 +5,12 @@
 declare const self: ServiceWorkerGlobalScope;
 
 import { awaitReply, getNextRequestId } from '../messaging';
-import { getURLScope, isURLScoped, removeURLScope } from '../scope';
+import {
+	getURLScope,
+	isURLScoped,
+	setURLScope,
+	removeURLScope,
+} from '../scope';
 import { getPathQueryFragment } from '../utils';
 
 /**
@@ -43,7 +48,18 @@ export function initializeServiceWorker(config: ServiceWorkerConfiguration) {
 	 * Worker Thread using the Loopback request
 	 */
 	self.addEventListener('fetch', (event) => {
-		const url = new URL(event.request.url);
+		let url = new URL(event.request.url);
+		// If the URL lacks scope, let's try to infer it from the referer
+		// URL.
+		if (!isURLScoped(url)) {
+			let referer;
+			try {
+				referer = new URL(event.request.headers.get('referer') || '');
+			} catch (e) {}
+			if (referer instanceof URL && isURLScoped(referer)) {
+				url = setURLScope(url, getURLScope(referer)!);
+			}
+		}
 
 		const unscopedUrl = removeURLScope(url);
 		if (
